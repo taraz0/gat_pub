@@ -1,0 +1,4 @@
+gt_venv/
+*.DS_Store
+.history3
+*__pycache__/

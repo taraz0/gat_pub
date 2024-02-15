@@ -1,0 +1,29 @@
+{% extends "landing/base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="col-md-6 col-lg-4">
+            <div class="d-flex flex-column align-items-center"> <!-- Flex container for vertical layout -->
+                <!-- <h2 class="mb-4">Feature buttons</h2> -->
+                <h2 class="mb-4"> </h2>
+                <form method="post" class="w-100 text-center">
+                    {% csrf_token %}
+                    <!-- Place your buttons here -->
+                    <button name="button1" type="submit" class="btn btn-primary mb-2">Button 1</button>
+                    <button name="button2" type="submit" class="btn btn-primary mb-2">Button 2</button>
+                    <button name="button3" type="submit" class="btn btn-primary mb-2">Button 3</button>
+                    <!-- Add other form elements if needed -->
+                </form>
+                    {% if output %}
+                    <div class="mt-3">
+                        <strong>Output:</strong> {{ output }}
+                    </div>
+                    {% endif %}
+                <!-- Any other content -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

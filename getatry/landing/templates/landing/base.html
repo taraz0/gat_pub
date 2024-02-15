@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My Site{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'landing/styles.css' %}">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%; /* Full height */
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+            background-color: black; /* Black background color */
+        }
+        .bg-image {
+            background-image: url("{% static 'landing/image.png' %}");
+            background-position: center center; /* Center the image */
+            background-repeat: no-repeat;
+            background-size: contain; /* Make sure the image is fully visible */
+            min-height: 100vh; /* Minimum height */
+        }
+        .nav-tabs {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px;
+        }
+        .nav-tabs a {
+            color: white;
+            margin-left: 10px;
+            text-decoration: none;
+            padding: 5px;
+            transition: color 0.3s;
+        }
+        .nav-tabs a:hover {
+            color: #CCCCCC; /* Light grey for hover state */
+        }
+        .content {
+            color: white; /* White text color */
+            text-align: center; /* Center text */
+            margin-top: 20px; /* Adjust spacing as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-image">
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}">Logout</a>
+                <a href="{% url 'features_page' %}">Features page</a>
+            {% else %}
+                <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'page_a' %}">Page A</a>
+        </div>
+
+        <!-- Page Content -->
+        {% block content %}{% endblock %}
+    </div>
+    <!-- Your scripts would go here -->
+    <script src="{% static 'landing/script.js' %}"></script>
+</body>
+</html>
